@@ -1,0 +1,69 @@
+{
+   "name":"HUTECH",
+   "author":"Muaz Khan_MichelNguyen_BaoBatBai",
+   "version":"0.1",
+   "manifest_version":2,
+   "minimum_chrome_version":"34",
+   "description":"WebRTC P2P HQ/HD screen-sharing. Share camera, microphone, speakers, full-screen, or software's screens.",
+   "homepage_url":"https://github.com/muaz-khan/Chrome-Extensions/tree/master/desktopCapture-p2p",
+   "background":{
+      "scripts":[
+         "socket.io.js",
+         "adapter.js",
+         "RTCMultiConnection.min.js",
+         "CodecsHandler.js",
+         "IceServersHandler.js",
+         "MultiStreamsMixer.js",
+         "desktop-capturing.js"
+      ],
+      "persistent":false
+   },
+   "content_scripts": [{
+		"matches": ["<all_urls>"],
+		"all_frames":true,
+		"js":[
+			"contentscript.js"
+		]
+   }],
+   "browser_action":{  
+      "default_icon":"images/logo128.png",
+      "default_title":"Share Your Screen",
+      "default_popup":"dropdown.html"
+   },
+   "icons":{
+      "16":"images/logo1.png",
+      "22":"images/logo1.png",
+      "32":"images/logo1.png",
+      "48":"images/logo1.png",
+      "128":"images/logo1.png"
+   },
+   "permissions":[
+      "desktopCapture",
+      "storage",
+      "tabs",
+      "<all_urls>",
+      "activeTab",
+      "tabCapture"
+   ],
+   "web_accessible_resources":[
+      "images/logo1.png"
+   ],
+   "options_ui":{
+      "page":"options.html",
+      "chrome_style":true
+   },
+   "commands":{
+      "save":{
+         "suggested_key": {
+             "default": "Alt+Shift+S" 
+        },
+        "description": "Save a link"
+      },
+      "open":{
+         "suggested_key": {
+             "default": "Alt+Shift+L" 
+        },
+        "description": "Save a links"
+      }
+   }
+}
